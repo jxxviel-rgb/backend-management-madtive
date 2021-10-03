@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class ChangeTaxFromVarcharToInteger extends Migration
@@ -13,9 +14,7 @@ class ChangeTaxFromVarcharToInteger extends Migration
      */
     public function up()
     {
-        Schema::table('projects', function (Blueprint $table) {
-            $table->integer('tax')->change();
-        });
+        DB::statement('ALTER TABLE projects ALTER tax TYPE INT');
     }
 
     /**
@@ -25,8 +24,6 @@ class ChangeTaxFromVarcharToInteger extends Migration
      */
     public function down()
     {
-        Schema::table('varchar_to_integer', function (Blueprint $table) {
-            //
-        });
+        
     }
 }
