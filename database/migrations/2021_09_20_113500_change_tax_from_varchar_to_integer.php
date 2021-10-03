@@ -14,7 +14,7 @@ class ChangeTaxFromVarcharToInteger extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE projects ALTER tax TYPE INT');
+        DB::statement('ALTER TABLE projects ALTER COLUMN tax TYPE integer USING (tax::integer)');
     }
 
     /**
