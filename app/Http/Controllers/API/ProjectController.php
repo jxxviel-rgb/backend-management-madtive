@@ -106,7 +106,7 @@ class ProjectController extends Controller
         try{
             $project = Project::findOrFail($id);
             $project->delete();
-            $team = ProjectTeam::where('project_id', $id);
+            $team = ProjectTeam::where('project_id', $id)->first();
             $team->delete();
             DB::commit();
             return response()->json([
